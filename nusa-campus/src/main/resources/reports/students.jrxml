@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="students" pageWidth="842" pageHeight="595" columnWidth="782" leftMargin="30" rightMargin="30" topMargin="26" bottomMargin="26" whenNoDataType="NoPages">
+ <style name="Base" isDefault="true" fontName="DejaVu Sans" fontSize="10" forecolor="#173043"/>
+ <parameter name="NIM_FROM" class="java.lang.String"/>
+ <parameter name="NIM_TO" class="java.lang.String"/>
+ <parameter name="LOGO" class="java.awt.Image"/>
+ <queryString><![CDATA[SELECT nim,name,program,year,email FROM students WHERE nim >= $P{NIM_FROM} AND nim <= $P{NIM_TO} ORDER BY nim]]></queryString>
+ <field name="nim" class="java.lang.String"/><field name="name" class="java.lang.String"/><field name="program" class="java.lang.String"/><field name="year" class="java.lang.Integer"/><field name="email" class="java.lang.String"/>
+ <pageHeader><band height="102">
+  <image><reportElement x="0" y="0" width="54" height="54"/><imageExpression><![CDATA[$P{LOGO}]]></imageExpression></image>
+  <staticText><reportElement x="68" y="0" width="600" height="18" forecolor="#007478"/><textElement><font size="11" isBold="true"/></textElement><text><![CDATA[NUSA / CAMPUS]]></text></staticText>
+  <staticText><reportElement x="68" y="22" width="640" height="29"/><textElement><font size="21" isBold="true"/></textElement><text><![CDATA[Laporan Data Mahasiswa]]></text></staticText>
+  <textField><reportElement x="0" y="68" width="600" height="20"/><textFieldExpression><![CDATA["Rentang NIM: " + $P{NIM_FROM} + " — " + $P{NIM_TO}]]></textFieldExpression></textField>
+  <line><reportElement x="0" y="94" width="782" height="1" forecolor="#007478"/></line>
+ </band></pageHeader>
+ <columnHeader><band height="30">
+<staticText><reportElement x="0" y="0" width="36" height="30" mode="Opaque" backcolor="#007478" forecolor="#FFFFFF"/><box leftPadding="7"/><textElement verticalAlignment="Middle"><font isBold="true"/></textElement><text><![CDATA[No.]]></text></staticText>
+<staticText><reportElement x="36" y="0" width="106" height="30" mode="Opaque" backcolor="#007478" forecolor="#FFFFFF"/><box leftPadding="7"/><textElement verticalAlignment="Middle"><font isBold="true"/></textElement><text><![CDATA[NIM]]></text></staticText>
+<staticText><reportElement x="142" y="0" width="180" height="30" mode="Opaque" backcolor="#007478" forecolor="#FFFFFF"/><box leftPadding="7"/><textElement verticalAlignment="Middle"><font isBold="true"/></textElement><text><![CDATA[Nama mahasiswa]]></text></staticText>
+<staticText><reportElement x="322" y="0" width="170" height="30" mode="Opaque" backcolor="#007478" forecolor="#FFFFFF"/><box leftPadding="7"/><textElement verticalAlignment="Middle"><font isBold="true"/></textElement><text><![CDATA[Program studi]]></text></staticText>
+<staticText><reportElement x="492" y="0" width="70" height="30" mode="Opaque" backcolor="#007478" forecolor="#FFFFFF"/><box leftPadding="7"/><textElement verticalAlignment="Middle"><font isBold="true"/></textElement><text><![CDATA[Angkatan]]></text></staticText>
+<staticText><reportElement x="562" y="0" width="220" height="30" mode="Opaque" backcolor="#007478" forecolor="#FFFFFF"/><box leftPadding="7"/><textElement verticalAlignment="Middle"><font isBold="true"/></textElement><text><![CDATA[Email]]></text></staticText>
+</band></columnHeader><detail><band height="32" splitType="Stretch">
+<textField textAdjust="StretchHeight"><reportElement x="0" y="0" width="36" height="32" stretchType="RelativeToTallestObject"/><box leftPadding="7" topPadding="7" bottomPadding="7"><bottomPen lineWidth="0.4" lineColor="#DDE7E9"/></box><textElement verticalAlignment="Middle"/><textFieldExpression><![CDATA[$V{REPORT_COUNT}]]></textFieldExpression></textField>
+<textField textAdjust="StretchHeight"><reportElement x="36" y="0" width="106" height="32" stretchType="RelativeToTallestObject"/><box leftPadding="7" topPadding="7" bottomPadding="7"><bottomPen lineWidth="0.4" lineColor="#DDE7E9"/></box><textElement verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{nim}]]></textFieldExpression></textField>
+<textField textAdjust="StretchHeight"><reportElement x="142" y="0" width="180" height="32" stretchType="RelativeToTallestObject"/><box leftPadding="7" topPadding="7" bottomPadding="7"><bottomPen lineWidth="0.4" lineColor="#DDE7E9"/></box><textElement verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{name}]]></textFieldExpression></textField>
+<textField textAdjust="StretchHeight"><reportElement x="322" y="0" width="170" height="32" stretchType="RelativeToTallestObject"/><box leftPadding="7" topPadding="7" bottomPadding="7"><bottomPen lineWidth="0.4" lineColor="#DDE7E9"/></box><textElement verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{program}]]></textFieldExpression></textField>
+<textField textAdjust="StretchHeight"><reportElement x="492" y="0" width="70" height="32" stretchType="RelativeToTallestObject"/><box leftPadding="7" topPadding="7" bottomPadding="7"><bottomPen lineWidth="0.4" lineColor="#DDE7E9"/></box><textElement verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{year}]]></textFieldExpression></textField>
+<textField textAdjust="StretchHeight"><reportElement x="562" y="0" width="220" height="32" stretchType="RelativeToTallestObject"/><box leftPadding="7" topPadding="7" bottomPadding="7"><bottomPen lineWidth="0.4" lineColor="#DDE7E9"/></box><textElement verticalAlignment="Middle"/><textFieldExpression><![CDATA[$F{email}]]></textFieldExpression></textField>
+</band></detail>
+ <pageFooter><band height="28">
+ <staticText><reportElement x="0" y="8" width="530" height="18" forecolor="#63808B"/><textElement><font size="9"/></textElement><text><![CDATA[Nusa Campus • Administrasi akademik]]></text></staticText>
+ <textField><reportElement x="610" y="8" width="122" height="18"/><textElement textAlignment="Right"/><textFieldExpression><![CDATA["Halaman " + $V{PAGE_NUMBER} + " dari "]]></textFieldExpression></textField>
+ <textField evaluationTime="Report"><reportElement x="736" y="8" width="46" height="18"/><textFieldExpression><![CDATA[$V{PAGE_NUMBER}]]></textFieldExpression></textField>
+ </band></pageFooter>
+ <summary><band height="35"><textField><reportElement x="0" y="12" width="782" height="22" forecolor="#007478"/><textElement><font isBold="true"/></textElement><textFieldExpression><![CDATA["Total: " + $V{REPORT_COUNT} + " mahasiswa"]]></textFieldExpression></textField></band></summary>
+</jasperReport>
